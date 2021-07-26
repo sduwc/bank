@@ -53,6 +53,11 @@ public class QuickStart {
                     saveMoney = Double.parseDouble(saveMoneyStr);
                 } catch (Exception e) {
                     System.out.println("输入有误");
+                    break;
+                }
+                if (saveMoney < 0) {
+                    System.out.println("不能小于0");
+                    break;
                 }
                 Bank.saveMoney(loginUser, saveMoney);
                 System.out.println("存款成功！现有余额为：" + new BigDecimal(loginUser.getAccount()).toString());
@@ -65,9 +70,11 @@ public class QuickStart {
                     takeMoney = Double.parseDouble(takeMoneyStr);
                 } catch (Exception e) {
                     System.out.println("输入有误");
+                    break;
                 }
                 if (!Bank.takeMoney(loginUser, takeMoney)) {
                     System.out.println("取款失败，余额不足！");
+                    break;
                 }
                 System.out.println("取款成功！现有余额为：" + new BigDecimal(loginUser.getAccount()).toString());
                 break;
